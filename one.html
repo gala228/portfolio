@@ -5,7 +5,7 @@
     <meta charset="UTF-8">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Арутюнян Ангелина</title>  
+    <title>Арутюнян Ангелина - Грамоты</title>  
     <link rel="stylesheet" href="./styles/main.css">  
     <link rel="preconnect" href="https://fonts.googleapis.com">  
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
@@ -39,31 +39,220 @@
         }  
         .info-block__img-wrap img {  
             width: 300px;  
-            height: auto;  
+            height: 400px;
+            object-fit: cover;
             border-radius: 10px;  
-        }  
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .info-block__img-wrap img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #ccc;
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-buttons {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
     </style>  
 </head>  
 
 <body>  
-    <main class="main">  
-        <h1>Грамоты за 1-3 курс</h1>  
-        <div class="info-block__img-wrap">  
-            <img src="img/gr/diplom2.jpeg" alt="фото 1"> 
-            <img src="img/gr/photo_5323472411770872974_y.jpg" alt="фото 2">  
-            <img src="img/gr/photo_5323472411770872975_x.jpg" alt="фото 3"> 
-            <img src="img/gr/photo_5323472411770872976_x.jpg" alt="фото 4">  
-            <img src="img/gr/photo_5323472411770872977_y.jpg" alt="фото 5">  
-            <img src="img/gr/photo_5341570944394713687_y.jpg" alt="фото 6"> 
-            
-            <img src="img/gr/photo_5326052694978326344_y.jpg" alt="фото 4">  
-            <img src="img/gr/photo_5326052694978326345_y.jpg" alt="фото 5">  
-             <img src="img/gr/sssss.jpg" alt="фото 6">
+    <!-- Модальное окно для полноэкранного просмотра -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="nav-buttons">
+            <button class="nav-btn prev-btn">&#10094;</button>
+            <button class="nav-btn next-btn">&#10095;</button>
+        </div>
+        <img class="modal-content" id="fullscreenImage">
+        <div class="caption" id="caption"></div>
+    </div>
 
-             <img src="photo_5273821172489910445_y.jpg" alt="фото 1"> 
-            <img src="photo_5276389850695726649_y.jpg" alt="фото 2"> 
+    <main class="main">  
+        <h1>Грамоты за время обучения</h1>  
+        <div class="info-block__img-wrap">  
+            <img src="img/gr/diplom2.jpeg" alt="Грамота 1"> 
+            <img src="img/gr/photo_5323472411770872974_y.jpg" alt="Грамота 2">  
+            <img src="img/gr/photo_5323472411770872975_x.jpg" alt="Грамота 3"> 
+            <img src="img/gr/photo_5323472411770872976_x.jpg" alt="Грамота 4">  
+            <img src="img/gr/photo_5323472411770872977_y.jpg" alt="Грамота 5">  
+            <img src="img/gr/photo_5341570944394713687_y.jpg" alt="Грамота 6"> 
+            
+            <img src="img/gr/photo_5326052694978326344_y.jpg" alt="Грамота 7">  
+            <img src="img/gr/photo_5326052694978326345_y.jpg" alt="Грамота 8">  
+            <img src="img/gr/sssss.jpg" alt="Грамота 9">
+
+            <img src="new/photo_5273821172489910445_y.jpg" alt="Грамота 10"> 
+            <img src="new/photo_5276389850695726649_y.jpg" alt="Грамота 11"> 
         </div>  
     </main>  
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем все элементы
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('fullscreenImage');
+            const captionText = document.getElementById('caption');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            // Получаем все изображения на странице
+            const images = document.querySelectorAll('.info-block__img-wrap img');
+            let currentImageIndex = 0;
+            
+            // Добавляем обработчик клика на каждое изображение
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    openModal();
+                    updateModalImage();
+                });
+            });
+            
+            // Функция открытия модального окна
+            function openModal() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Функция закрытия модального окна
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Функция обновления изображения в модальном окне
+            function updateModalImage() {
+                const currentImg = images[currentImageIndex];
+                modalImg.src = currentImg.src;
+                captionText.textContent = currentImg.alt;
+            }
+            
+            // Функция показа предыдущего изображения
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateModalImage();
+            }
+            
+            // Функция показа следующего изображения
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateModalImage();
+            }
+            
+            // Обработчики событий
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrevImage);
+            nextBtn.addEventListener('click', showNextImage);
+            
+            // Закрытие модального окна при клике на фон
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Навигация с помощью клавиатуры
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    } else if (e.key === 'ArrowLeft') {
+                        showPrevImage();
+                    } else if (e.key === 'ArrowRight') {
+                        showNextImage();
+                    }
+                }
+            });
+            
+            // Предзагрузка изображений для плавной навигации
+            window.addEventListener('load', () => {
+                images.forEach(img => {
+                    const tempImg = new Image();
+                    tempImg.src = img.src;
+                });
+            });
+        });
+    </script>
 </body>  
 
 </html>
