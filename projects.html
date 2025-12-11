@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Арутюнян Ангелина</title>  
-    <link rel="stylesheet" href="./styles/main.css">  
     <link rel="preconnect" href="https://fonts.googleapis.com">  
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">  
@@ -23,7 +22,7 @@
         }  
         .main {  
             max-width: 900px;  
-            margin: 80px auto;  
+            margin: 40px auto;  
             padding: 30px;  
             background-color: rgba(255, 255, 255, 0.9);  
             border-radius: 10px;  
@@ -39,79 +38,294 @@
         }  
         .info-block__img-wrap img {  
             width: 450px;  
-            height: auto;  
+            height: 300px;
+            object-fit: cover;
             border-radius: 10px;  
-        }  
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .info-block__img-wrap img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #ccc;
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-buttons {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
     </style>  
 </head>  
-
 <body>  
+    <!-- Модальное окно для полноэкранного просмотра -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="nav-buttons">
+            <button class="nav-btn prev-btn">&#10094;</button>
+            <button class="nav-btn next-btn">&#10095;</button>
+        </div>
+        <img class="modal-content" id="fullscreenImage">
+        <div class="caption" id="caption"></div>
+    </div>
+
+    <!-- Контент страницы -->
+    
+    
+    <main class="main">  
+        <h1>PyCharm</h1>  
+        <div class="info-block__img-wrap">  
+            <img src="img/пайчар.png" alt="PyCharm 1"> 
+            <img src="img/пайчар2.png" alt="PyCharm 2">  
+            <img src="img/пайчар3.png" alt="PyCharm 3"> 
+            <img src="img/пайчар4.png" alt="PyCharm 4"> 
+        </div>  
+    </main>  
+    
+    <main class="main">  
+        <h1>Разработка компьютерной модели с помощью Excel</h1>  
+        <div class="info-block__img-wrap">  
+            <img src="img/exel.png" alt="Excel модель 1"> 
+            <img src="img/exel2.png" alt="Excel модель 2">  
+            <img src="img/exel3.png" alt="Excel модель 3"> 
+            <img src="img/exel4.png" alt="Excel модель 4">  
+            <img src="img/exel5.png" alt="Excel модель 5">  
+            <img src="img/exel6.png" alt="Excel модель 6"> 
+        </div>  
+    </main>  
+    <main class="main">  
+        <h1>Отладка алгоритмов с помощью Python</h1>  
+        <div class="info-block__img-wrap">  
+            <img src="img/python.png" alt="Python отладка 1"> 
+            <img src="img/python2.png" alt="Python отладка 2">  
+            <img src="img/python3.png" alt="Python отладка 3"> 
+        </div>  
+    </main>  
     <main class="main">  
         <h1>Microsoft Access</h1>  
         <div class="info-block__img-wrap">  
-            <img src="img/pr/Снимок экрана 2024-11-19 225610.png" alt="фото 1"> 
-            <img src="img/pr/Снимок экрана 2024-11-19 225700.png" alt="фото 2">  
-            <img src="img/pr/Снимок экрана 2024-11-19 225833.png" alt="фото 3"> 
-            <img src="img/pr/Снимок экрана 2024-11-19 225918.png" alt="фото 4">  
-            <img src="img/pr/Снимок экрана 2024-11-19 225955.png" alt="фото 5">  
+            <img src="img/pr/Снимок экрана 2024-11-19 225610.png" alt="Access 1"> 
+            <img src="img/pr/Снимок экрана 2024-11-19 225700.png" alt="Access 2">  
+            <img src="img/pr/Снимок экрана 2024-11-19 225833.png" alt="Access 3"> 
+            <img src="img/pr/Снимок экрана 2024-11-19 225918.png" alt="Access 4">  
+            <img src="img/pr/Снимок экрана 2024-11-19 225955.png" alt="Access 5">  
         </div>  
     </main>  
-</body>  
-<body>  
+    
     <main class="main">  
         <h1>BP win</h1>  
         <div class="info-block__img-wrap">  
-            <img src="new/bp/photo_5294135547461234306_y.jpg" alt="фото 1"> 
-            <img src="new/bp/photo_5294214149657730877_y.jpg" alt="фото 1"> 
-             <img src="new/bp/photo_5294214149657730878_y.jpg" alt="фото 1"> 
-            <img src="new/bp/photo_5294214149657730879_y.jpg" alt="фото 1"> 
-             <img src="new/bp/photo_5294214149657730880_y.jpg" alt="фото 1"> 
-            <img src="new/bp/photo_5294214149657730881_y.jpg" alt="фото 1"> 
+            <img src="new/bp/photo_5294135547461234306_y.jpg" alt="BP win 1"> 
+            <img src="new/bp/photo_5294214149657730877_y.jpg" alt="BP win 2"> 
+            <img src="new/bp/photo_5294214149657730878_y.jpg" alt="BP win 3"> 
+            <img src="new/bp/photo_5294214149657730879_y.jpg" alt="BP win 4"> 
+            <img src="new/bp/photo_5294214149657730880_y.jpg" alt="BP win 5"> 
+            <img src="new/bp/photo_5294214149657730881_y.jpg" alt="BP win 6"> 
         </div>  
-    </main>  
-</body> 
-<body>  
+    </main> 
+    
     <main class="main">  
         <h1>Создание клиентской части приложения для базы данных на Java Script</h1>  
         <div class="info-block__img-wrap">  
-            <img src="new/java/photo_5294135547461234315_y.jpg" alt="фото 1"> 
-            <img src="new/java/photo_5294214149657730896_y.jpg" alt="фото 1"> 
+            <img src="new/java/photo_5294135547461234315_y.jpg" alt="JavaScript приложение 1"> 
+            <img src="new/java/photo_5294214149657730896_y.jpg" alt="JavaScript приложение 2"> 
         </div>  
     </main>  
-</body>  
-<body>  
+    
     <main class="main">  
         <h1>Бд в PhPMyAdmin</h1>  
         <div class="info-block__img-wrap">  
-            <img src="new/php/photo_5294214149657730885_y.jpg" alt="фото 1"> 
-            <img src="new/php/photo_5294214149657730886_y.jpg" alt="фото 1"> 
-            <img src="new/php/photo_5294214149657730887_y.jpg" alt="фото 1"> 
-            <img src="new/php/photo_5294214149657730888_y.jpg" alt="фото 1"> 
-            <img src="new/php/photo_5294214149657730889_y.jpg" alt="фото 1"> 
-            <img src="new/php/photo_5294214149657730890_y.jpg" alt="фото 1"> 
+            <img src="new/php/photo_5294214149657730885_y.jpg" alt="PhPMyAdmin 1"> 
+            <img src="new/php/photo_5294214149657730886_y.jpg" alt="PhPMyAdmin 2"> 
+            <img src="new/php/photo_5294214149657730887_y.jpg" alt="PhPMyAdmin 3"> 
+            <img src="new/php/photo_5294214149657730888_y.jpg" alt="PhPMyAdmin 4"> 
+            <img src="new/php/photo_5294214149657730889_y.jpg" alt="PhPMyAdmin 5"> 
+            <img src="new/php/photo_5294214149657730890_y.jpg" alt="PhPMyAdmin 6"> 
         </div>  
     </main>  
-</body>  
- <body>  
+    
     <main class="main">  
         <h1>Создание проекта помощью VBA в MS EXCEL, применение пользовательских форм</h1>  
         <div class="info-block__img-wrap">  
-            <img src="new/vba/photo_5294214149657730899_y.jpg" alt="фото 1"> 
-            <img src="new/vba/photo_5294214149657730900_y.jpg" alt="фото 1"> 
+            <img src="new/vba/photo_5294214149657730899_y.jpg" alt="VBA формы 1"> 
+            <img src="new/vba/photo_5294214149657730900_y.jpg" alt="VBA формы 2"> 
         </div>  
     </main>  
-</body>  
-<body>  
+    
     <main class="main">  
         <h1>Программирование VBA в EXCEL</h1>  
         <div class="info-block__img-wrap">  
-            <img src="new/vba2/photo_5294135547461234317_y.jpg" alt="фото 1"> 
-            <img src="new/vba2/photo_5294214149657730905_y.jpg" alt="фото 1"> 
-            <img src="new/vba2/photo_5294214149657730906_y.jpg" alt="фото 1"> 
-            <img src="new/vba2/photo_5294214149657730907_y.jpg" alt="фото 1"> 
-            <img src="new/vba2/photo_5294214149657730908_y.jpg" alt="фото 1"> 
-            <img src="new/vba2/photo_5294214149657730909_y.jpg" alt="фото 1"> 
+            <img src="new/vba2/photo_5294135547461234317_y.jpg" alt="VBA программирование 1"> 
+            <img src="new/vba2/photo_5294214149657730905_y.jpg" alt="VBA программирование 2"> 
+            <img src="new/vba2/photo_5294214149657730906_y.jpg" alt="VBA программирование 3"> 
+            <img src="new/vba2/photo_5294214149657730907_y.jpg" alt="VBA программирование 4"> 
+            <img src="new/vba2/photo_5294214149657730908_y.jpg" alt="VBA программирование 5"> 
+            <img src="new/vba2/photo_5294214149657730909_y.jpg" alt="VBA программирование 6"> 
         </div>  
     </main>  
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем все элементы
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('fullscreenImage');
+            const captionText = document.getElementById('caption');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            // Получаем все изображения на странице
+            const images = document.querySelectorAll('.info-block__img-wrap img');
+            let currentImageIndex = 0;
+            
+            // Добавляем обработчик клика на каждое изображение
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    openModal();
+                    updateModalImage();
+                });
+            });
+            
+            // Функция открытия модального окна
+            function openModal() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Функция закрытия модального окна
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Функция обновления изображения в модальном окне
+            function updateModalImage() {
+                const currentImg = images[currentImageIndex];
+                modalImg.src = currentImg.src;
+                captionText.textContent = currentImg.alt;
+            }
+            
+            // Функция показа предыдущего изображения
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateModalImage();
+            }
+            
+            // Функция показа следующего изображения
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateModalImage();
+            }
+            
+            // Обработчики событий
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrevImage);
+            nextBtn.addEventListener('click', showNextImage);
+            
+            // Закрытие модального окна при клике на фон
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Навигация с помощью клавиатуры
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    } else if (e.key === 'ArrowLeft') {
+                        showPrevImage();
+                    } else if (e.key === 'ArrowRight') {
+                        showNextImage();
+                    }
+                }
+            });
+            
+            // Предзагрузка изображений для плавной навигации
+            window.addEventListener('load', () => {
+                images.forEach(img => {
+                    const tempImg = new Image();
+                    tempImg.src = img.src;
+                });
+            });
+        });
+    </script>
 </body>  
 </html>
